@@ -18,7 +18,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -110,7 +111,7 @@ label span {
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 14px;
   margin-bottom: 20px;
 }
@@ -214,13 +215,15 @@ label {
   gap: 8px;
 }
 
-input {
+input,
+select {
   width: 100%;
   min-height: 42px;
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 0 12px;
   color: #172033;
+  background: #ffffff;
 }
 
 .record-list {
@@ -260,6 +263,354 @@ input {
   line-height: 1.6;
 }
 
+/* ---- 台账扩展样式 ---- */
+
+.archive-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.notice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.notice-ok {
+  border-left: 6px solid #16a34a;
+}
+
+.notice-warn {
+  border-left: 6px solid var(--warn);
+}
+
+.notice-error {
+  border-left: 6px solid #e11d48;
+}
+
+.notice button {
+  min-height: 32px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  border-radius: 999px;
+  padding: 0 18px;
+}
+
+.tabs button.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.st-due {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.st-awaiting-review {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.st-pending-supplement {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.st-monitoring {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.st-closed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.st-superseded {
+  background: #e2e8f0;
+  color: #475569;
+  margin-left: 8px;
+}
+
+.st-batch {
+  background: color-mix(in srgb, var(--primary) 10%, #ffffff);
+  color: var(--primary);
+}
+
+.record-card.wide {
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.record-card.is-superseded {
+  opacity: 0.75;
+}
+
+.record-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+}
+
+.record-head h3 {
+  margin-bottom: 4px;
+}
+
+.record-head p {
+  margin-bottom: 0;
+  color: #526070;
+}
+
+.record-aircraft {
+  display: grid;
+  gap: 4px;
+  text-align: right;
+  color: #526070;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.record-aircraft strong {
+  color: #172033;
+}
+
+.triggers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trigger {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.trigger-calendar {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.trigger-hours {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.trigger-none {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.inline-form-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.inline-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  align-items: end;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfdff;
+}
+
+.inline-form .form-hint,
+.inline-form .error-text {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.form-hint {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.error-text {
+  color: #b91c1c;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.fact-grid div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fbfdff;
+}
+
+.fact-grid dt {
+  color: #64748b;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.fact-grid dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.supplement-note {
+  margin: 0;
+  color: #a16207;
+  background: #fef9c3;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+.history {
+  font-size: 13px;
+  color: #526070;
+}
+
+.history summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.history ul,
+.log-list {
+  margin: 10px 0 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.history li,
+.log-list li {
+  border-left: 3px solid var(--border);
+  padding-left: 10px;
+  line-height: 1.5;
+}
+
+.history-at {
+  color: #94a3b8;
+  margin-right: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.ledger-table th,
+.ledger-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.ledger-table th {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hours-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.hours-cell input {
+  width: 110px;
+}
+
+.hours-cell button {
+  min-height: 34px;
+}
+
+.hours-cell button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.sub-heading {
+  margin: 24px 0 12px;
+  font-size: 16px;
+}
+
+.monitor-heading {
+  margin-top: 28px;
+}
+
+.directives-layout {
+  display: grid;
+  gap: 20px;
+}
+
+.directive-stats {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.empty-state {
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+}
+
 @media (max-width: 860px) {
   .hero,
   .workspace,
@@ -269,5 +620,13 @@ input {
 
   .field-grid {
     grid-template-columns: 1fr;
+  }
+
+  .record-head {
+    flex-direction: column;
+  }
+
+  .record-aircraft {
+    text-align: left;
   }
 }
